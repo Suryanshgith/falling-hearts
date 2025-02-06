@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Falling Hearts</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Move your CSS to an external file -->
+  <style>
+    /* Temporary inline styles for demo purposes */
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #0F3460;
+      height: 100vh;
+    }
+    .heart {
+      position: absolute;
+      top: -10px;
+      font-size: 48px;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Configuration constants
+    const HEART_INTERVAL = 250;
+    const HEART_LIFETIME = 5000;
+    const MIN_FONT_SIZE = 20;
+    const MAX_FONT_SIZE = 50;
+    const MIN_ANIM_DURATION = 2;
+    const MAX_ANIM_DURATION = 5;
+    const heartSymbols = ["❤️", "💖", "💜", "💙", "💛", "💚", "🩷"];
+
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+      const fontSize = Math.random() * (MAX_FONT_SIZE - MIN_FONT_SIZE) + MIN_FONT_SIZE;
+      const animationDuration = Math.random() * (MAX_ANIM_DURATION - MIN_ANIM_DURATION) + MIN_ANIM_DURATION;
+
+      Object.assign(heart.style, {
+        left: Math.random() * 100 + "vw",
+        fontSize: fontSize + "px",
+        animationDuration: animationDuration + "s"
+      });
+
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), HEART_LIFETIME);
+    }, HEART_INTERVAL);
+  </script>
+</body>
+</html>
