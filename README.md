@@ -5,4 +5,4 @@
 </p>
 
 ## How to use
-Open `hearts.html` in your browser. You can edit it as only you want and see the changes immediately.
+Open `hearts.html` with your browser. You can edit it as only you want and see the changes immediately.
